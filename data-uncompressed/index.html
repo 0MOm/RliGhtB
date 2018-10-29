@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>RliGhtB</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style> 
+   
+  body {
+  font: normal 16px/1.5 "Helvetica Neue", sans-serif;
+  background: #FFFFFF;
+  color: #000000;
+  padding: 10px;
+  margin: 0;
+}
+   
+input[type=submit]{
+  display: block;
+  width: 100%;
+  height: 80px;
+  border: none;
+  box-sizing: border-box;
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  background: #008cba;
+  color: #000;
+  cursor: pointer;
+}
+
+input[type='color']{
+    display: block;
+    width: 100%;
+    height: 80px;
+    border: none;  
+    cursor: pointer;
+}
+
+.column button{
+  display: block;
+  width: 100%;
+  height: 80px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px; 
+  box-sizing: border-box;
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  background: #008cba;
+  color: #000;
+}
+
+.column3 button {
+  display: block;
+  position: absolute;
+  <!-- width: 30%; -->
+  height: 80px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 10px; 
+  box-sizing: border-box;
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  background: #008cba;
+  color: #000;
+}
+     
+@media screen and (min-width: 420px) {
+  .column3 button:nth-child(odd) {
+    margin: 0 auto 0 0;
+    width: 30%;
+  }
+}
+
+  @media screen and (min-width: 420px) {
+  .column3 button:nth-child(even) {
+    margin: 0 5% 0 0;
+    width: 30%;
+  }
+  }
+
+
+</style>
+   </head>
+  <body>
+    <!-- Заголовок -->
+    <div id="header" div class="row">
+        <div class="panel row" style="text-align:center"> 
+            <h1>RliGhtB</h1>
+        </div>
+    </div>
+    <!-- Управление -->
+    <div class="column">
+          <!-- <button id='ts1'>On/Off</button> -->
+        <form action="">
+          <input type="submit" value="On/Off" name="toggle" >
+        </form>
+
+    </div>
+    <div class="column">
+        <form action="">
+          <input type="color" name="favcolor"  style="padding:0">
+          <input type="submit" value="Choise">
+        </form>
+    </div>
+    <!-- Настройки -->
+    <footer id="page-footer">
+     <div class="column3">
+      <form action="/config.html">
+        <button type="submit" style="left:10px">Config</button>
+      </form>
+      <button id='refresh' style="left:35%">Refresh</button>
+      <button id='restart'style="right:10px">Restart</button>
+    </div>
+   </footer>
+  </body>
+</html>
