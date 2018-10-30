@@ -4,92 +4,49 @@
     <meta charset="utf-8" />
     <title>RliGhtB</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   <style> 
-   
-  body {
-  font: normal 16px/1.5 "Helvetica Neue", sans-serif;
-  background: #FFFFFF;
-  color: #000000;
-  padding: 10px;
-  margin: 0;
-}
-   
-input[type=submit]{
-  display: block;
-  width: 100%;
-  height: 80px;
-  border: none;
-  box-sizing: border-box;
-  font-size: 2rem;
-  text-align: center;
-  text-decoration: none;
-  background: #008cba;
-  color: #000;
-  cursor: pointer;
-}
-
-input[type='color']{
-    display: block;
-    width: 100%;
-    height: 80px;
-    border: none;  
-    cursor: pointer;
-}
-
-.column button{
-  display: block;
-  width: 100%;
-  height: 80px;
-  border: none;
-  margin-top: 10px;
-  margin-bottom: 10px; 
-  box-sizing: border-box;
-  font-size: 2rem;
-  text-align: center;
-  text-decoration: none;
-  background: #008cba;
-  color: #000;
-}
-
-.column3 button {
-  display: block;
-  position: absolute;
-  <!-- width: 30%; -->
-  height: 80px;
-  border: none;
-  margin-top: 10px;
-  margin-bottom: 10px; 
-  box-sizing: border-box;
-  font-size: 2rem;
-  text-align: center;
-  text-decoration: none;
-  background: #008cba;
-  color: #000;
-}
-     
-@media screen and (min-width: 420px) {
-  .column3 button:nth-child(odd) {
-    margin: 0 auto 0 0;
-    width: 30%;
-  }
-}
-
-  @media screen and (min-width: 420px) {
-  .column3 button:nth-child(even) {
-    margin: 0 5% 0 0;
-    width: 30%;
-  }
-  }
-
-
-</style>
+	<link href="style.css" rel="stylesheet">
+	<link href="style_svg.css" rel="stylesheet">
    </head>
   <body>
     <!-- Заголовок -->
     <div id="header" div class="row">
         <div class="panel row" style="text-align:center"> 
-            <h1>RliGhtB</h1>
-        </div>
+            <!-- <h1>RliGhtB</h1> -->
+		<svg version="1.1" class="svg-inject iconic iconic-lightbulb replaced-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="300" height="300" viewBox="0 0 714 714" style="enable-background:new 0 0 714 714;" xml:space="preserve">
+		<circle class="icon-container" cx="357" cy="357" r="330" stroke-width="16" stroke="#000" fill="none"></circle>
+		<g class="iconic-lightbulb-screws">
+		<defs>
+		<clipPath id="iconic-lightbulb-screws-clip">
+		<polygon points="304.333,511 433.667,511 430,521.5 281.667,547.167 280.333,521.5"></polygon>
+		</clipPath>
+		</defs>
+		<line clip-path="url(#iconic-lightbulb-screws-clip)" x1="430" y1="505" x2="302" y2="529"></line>
+		<line class="st4" x1="430" y1="537" x2="302" y2="561"></line>
+		<line class="st4" x1="430" y1="569" x2="302" y2="593"></line>
+		<line class="st4" x1="410" y1="605" x2="322" y2="621"></line>
+		</g>
+
+		<g class="iconic-lightbulb-light">
+		<defs>
+		<clipPath id="iconic-lightbulb-light-clip">
+		<polygon points="514,329 436,369 436,436 299,436 293,360 489,280"></polygon>
+		</clipPath>
+		</defs>
+		<g clip-path="url(#iconic-lightbulb-light-clip)">
+		<line x1="330" y1="369" x2="330" y2="435"></line>
+		<polyline points="478,313 402,349 402,435"></polyline>
+		</g>
+		<line x1="478" y1="129" x2="254" y2="233"></line>
+		<line x1="354" y1="125" x2="254" y2="173"></line>
+		<line x1="478" y1="189" x2="254" y2="293"></line>
+		<line x1="478" y1="249" x2="254" y2="353"></line>
+		</g>
+
+		<path class="iconic-lightbulb-base" d="M292.431,505c0.863,4.314,5.169,7.845,9.569,7.845h128c4.4,0,8.706-3.53,9.569-7.845l12.861-64.311c0.863-4.314-2.03-7.845-6.431-7.845H286c-4.4,0-7.294,3.53-6.431,7.845L292.431,505z"></path>
+		</svg>
+
+
+		</div>
     </div>
     <!-- Управление -->
     <div class="column">
@@ -108,11 +65,11 @@ input[type='color']{
     <!-- Настройки -->
     <footer id="page-footer">
      <div class="column3">
-      <form action="/config.html">
-        <button type="submit" style="left:10px">Config</button>
+      <form action="/config.html" style="display:inline">
+        <button type="submit">Config</button>
       </form>
-      <button id='refresh' style="left:35%">Refresh</button>
-      <button id='restart'style="right:10px">Restart</button>
+      <button id='refresh'>Refresh</button>
+      <button id='restart'>Restart</button>
     </div>
    </footer>
   </body>
