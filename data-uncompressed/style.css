@@ -5,18 +5,16 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-html,
-body {
-  font-size: 100%; }
-
 body {
   background: white;
   color: #222222;
   padding: 10px;
-  margin: 0;
+  max-width: 500px;
+  margin: 0 auto;
   font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-style: normal;
+  font-size: 100%;
   line-height: 1;
   position: relative;
   cursor: default; }
@@ -39,16 +37,21 @@ input[type='color']{
     display: block;
     width: 100%;
     height: 80px;
+	margin: 10px 0 10px 0;
     border: none;  
     cursor: pointer;
 }
 
-.column button, .column3 button {
-  display: block;
+/* .column3{ */
+	/* margin:0; */
+/* } */
+
+.column button, .column form input, .column3 button, .column3 form{
+  display: inline-table;
   width: 100%;
   height: 80px;
   border: none;
-  padding: 5px;
+  padding: 0;
   margin: 10px 0 10px 0;
   box-sizing: border-box;
   font-size: 2rem;
@@ -59,33 +62,12 @@ input[type='color']{
 }
 
 @media screen and (min-width: 500px) {
-  .column3 button:nth-child(1) {
-	position: absolute;
-	left: 10px;
-	display: inline;
-    margin: 10px 0% 10px 0%;
-    width: 30%;
+  .column3 button:nth-child(odd), .column3 form {
+    width: 32%;
+  }
+  .column3 button:nth-child(even) {
+	margin-left:2%;
+	margin-right:2%;
+    width: 32%;
   }
 }
-
-@media screen and (min-width: 500px) {
-  .column3 button:nth-child(2) {
-    position: absolute;
-	right: 35%;
-	display: inline;
-	margin: 10px 2% 10px 2%;
-    width: 30%;
-  }
-}
-
-@media screen and (min-width: 500px) {
-  .column3 button:nth-child(3) {
-	position: absolute;
-	right: 10px;
-	display: inline;
-    margin: 10px 0% 10px 0%;
-    width: 30%;
-  }
-}
-  
-  
