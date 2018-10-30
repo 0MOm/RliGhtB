@@ -1,0 +1,91 @@
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+html,
+body {
+  font-size: 100%; }
+
+body {
+  background: white;
+  color: #222222;
+  padding: 10px;
+  margin: 0;
+  font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  position: relative;
+  cursor: default; }
+   
+input[type=submit]{
+  display: block;
+  width: 100%;
+  height: 80px;
+  border: none;
+  box-sizing: border-box;
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  background: #008cba;
+  color: #000;
+  cursor: pointer;
+}
+
+input[type='color']{
+    display: block;
+    width: 100%;
+    height: 80px;
+    border: none;  
+    cursor: pointer;
+}
+
+.column button, .column3 button {
+  display: block;
+  width: 100%;
+  height: 80px;
+  border: none;
+  padding: 5px;
+  margin: 10px 0 10px 0;
+  box-sizing: border-box;
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  background: #008cba;
+  color: #000;
+}
+
+@media screen and (min-width: 500px) {
+  .column3 button:nth-child(1) {
+	position: absolute;
+	left: 10px;
+	display: inline;
+    margin: 10px 0% 10px 0%;
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .column3 button:nth-child(2) {
+    position: absolute;
+	right: 35%;
+	display: inline;
+	margin: 10px 2% 10px 2%;
+    width: 30%;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  .column3 button:nth-child(3) {
+	position: absolute;
+	right: 10px;
+	display: inline;
+    margin: 10px 0% 10px 0%;
+    width: 30%;
+  }
+}
+  
+  
