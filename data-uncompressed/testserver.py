@@ -5,8 +5,8 @@ import time
 import json
 import cgi
 
-s1 = 'unlatched'
-s2 = 'unlatched'
+power = 'unlatched'
+color = '#fff'
 
 class EspFeederRequestHandler(http.server.SimpleHTTPRequestHandler):
         def xsend(self,content,contentType="text/html"):
@@ -19,20 +19,25 @@ class EspFeederRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(content)
 
         def do_GET(self):
-            global s1,s2
+            global power,color
             self.path = self.path.split('?',1)[0]
-            print (self.path)
+            print("self.path:   ")
+            print(self.path)
             if self.path == '/status':
-                v = { 's1': s1, 's2': s2, 'time': int(time.time()) };
+                v = { 'power': power, 'color': color, 'time': int(time.time()) };
                 self.xsend(json.dumps(v),"text/json")
-            elif self.path == '/toggle1':
-                if s1 == 'unlatched': s1 = 'latched'
-                else: s1 = 'unlatched'
+            elif self.path == '/toggle':
+                if power == 'off': 
+                    power = 'on'
+                    print("Power ON")
+                else: 
+                    power = 'off'
+                    print("Power OFF")
                 self.xsend("ok")
-            elif self.path == '/toggle2':
-                if s2 == 'unlatched': s2 = 'latched'
-                else: s2 = 'unlatched'
-                self.xsend("ok")
+            elif self.path == '/color':
+                # if color == 'unlatched': color = 'latched'
+                # else: color = 'unlatched'
+                print("color!!!!!!")
             elif self.path == '/restart':
                 self.xsend("Restarting... please wait a minute or two and refresh")
             elif self.path == '/list':
