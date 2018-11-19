@@ -5,10 +5,11 @@ import time
 import json
 import cgi
 
-power = 'unlatched'
-color = '#fff'
-
-class EspFeederRequestHandler(http.server.SimpleHTTPRequestHandler):
+power = 'Off'
+color = '#FF0000'
+sRequest = ""
+cmdRequest = ""
+class RliGhtBRequestHandler(http.server.SimpleHTTPRequestHandler):
         def xsend(self,content,contentType="text/html"):
             print ("serving custom response: " + content)
             self.send_response(200)
@@ -20,24 +21,28 @@ class EspFeederRequestHandler(http.server.SimpleHTTPRequestHandler):
 
         def do_GET(self):
             global power,color
+            sRequest = self.path
             self.path = self.path.split('?',1)[0]
-            print("self.path:   ")
-            print(self.path)
-            if self.path == '/status':
-                v = { 'power': power, 'color': color, 'time': int(time.time()) };
-                self.xsend(json.dumps(v),"text/json")
-            elif self.path == '/toggle':
-                if power == 'off': 
-                    power = 'on'
-                    print("Power ON")
+            cmdRequest = sRequest.split('?')
+            print ("Request: ")
+            print (sRequest)
+            print ("Command: ")
+            print (cmdRequest)
+            if cmdRequest[1] == 'toggle=On%2FOff':
+                print ("TOGGLEEEEEEEEEEEEEEEEEEEEEEEE")
+                if power == 'Off': 
+                    power = 'On'
+                    print ("ONNNNNNNNNNNNNNNNNNNNNNNN")
                 else: 
-                    power = 'off'
-                    print("Power OFF")
+                    power = 'Off'
+                    print ("OFFFFFFFFFFFFFFFFFFFFFFFF")
+                print ("TOGGLEEEEEEEEEEEEEEEEEEEEEEEE")
                 self.xsend("ok")
-            elif self.path == '/color':
-                # if color == 'unlatched': color = 'latched'
-                # else: color = 'unlatched'
-                print("color!!!!!!")
+            elif self.path == 'favcolor':
+                if color == 'unlatched': color = 'latched'
+                else: color = 'unlatched'
+                self.xsend("ok")
+                print ("COLORRRRRRRRRRRRRRRRRRRRRRRRR")
             elif self.path == '/restart':
                 self.xsend("Restarting... please wait a minute or two and refresh")
             elif self.path == '/list':
@@ -46,8 +51,10 @@ class EspFeederRequestHandler(http.server.SimpleHTTPRequestHandler):
                     v.append( { 'type': 'file', 'name': f })
                 self.xsend(json.dumps(v),"text/json")
             else:
+                print ("return http.server.SimpleHTTPRequestHandler.do_GET(self)")
                 return http.server.SimpleHTTPRequestHandler.do_GET(self)
-
+            print ("do_GET(self): ENDDDDDDDDDDDDDDDDDDD")
+            
         def do_DELETE(self):
             self.path = self.path.split('?',1)[0]
             print (self.path)
@@ -68,7 +75,6 @@ class EspFeederRequestHandler(http.server.SimpleHTTPRequestHandler):
                             os.remove(fn)
                             self.xsend("")
                             return
-
             self.send_response(404)
 
         def do_PUT(self):
@@ -137,10 +143,10 @@ class EspFeederRequestHandler(http.server.SimpleHTTPRequestHandler):
                 return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 
-#os.chdir("data-uncompressed")
+os.chdir("c:\Work\RliGhtB\data-uncompressed")
 PORT = 80
 
-Handler = EspFeederRequestHandler
+Handler = RliGhtBRequestHandler
 
 httpd = socketserver.TCPServer(("", PORT), Handler)
 
