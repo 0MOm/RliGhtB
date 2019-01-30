@@ -6,6 +6,7 @@ class Lbox {
   Adafruit_NeoPixel strip = Adafruit_NeoPixel(24, PIN, NEO_GRB + NEO_KHZ800); //lBoxCount * LED_COUNT
   uint8_t lBoxCount;
   uint8_t commonBrightness;
+  uint8_t storeBrightness;
   const uint8_t LED_COUNT = 4; // count LED in one lBox
   const uint8_t MAX_BRIGHTNESS = 255;
   const uint8_t MIN_BRIGHTNESS = 10;
@@ -53,6 +54,23 @@ class Lbox {
       }
       delay(1000);
     }
+    
+    void on(){
+      commonBrightness = storeBrightness;
+    }
+    void off(){
+      commonBrightness = 0;
+    }
+
+    void toggle() {
+      if (commonBrightness == 0) {
+        commonBrightness = storeBrightness;
+      }
+      else {
+        commonBrightness = 0;
+      }
+    }
+
 
     uint8_t get_brightness()
     {
