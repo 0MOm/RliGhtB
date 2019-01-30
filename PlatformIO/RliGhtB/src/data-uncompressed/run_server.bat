@@ -1,2 +1,0 @@
-python testserver.py
-pause
