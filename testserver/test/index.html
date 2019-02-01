@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+  <meta name='viewport' content='width=device-width' />
+
+  <title>WS2812FX Ctrl</title>
+
+  <script type='text/javascript' src='main.js'></script>
+
+  <style>
+  * {
+    font-family:sans-serif;
+    margin:0;
+    padding:0;
+  }
+
+  body {
+    width:100%;
+    max-width:675px;
+    background-color:#202020;
+  }
+  
+  h1 {
+    width:65%;
+    margin:25px 0 25px 25%;
+    color:#454545;
+    text-align:center;
+  }
+  
+  #colorbar {
+    float:left;
+  }
+  
+  #controls {
+    width:60%;
+    display:inline-block;
+    padding-left:5px;
+  }
+
+  ul {
+    text-align:center;
+  }
+
+  ul#mode li {
+    display:block;
+  }
+
+  ul#brightness li, ul#speed li, ul#auto li, ul#config li{
+    display:inline-block;
+    text-align: center;
+    width:45%;
+  }
+
+  ul li a {
+    display:block;
+    margin:3px;
+    padding:2px 2px;
+    border:2px solid #454545;
+    border-radius:5px;
+    color:#454545;
+    font-weight:bold;
+    text-decoration:none;
+    max-height: 25px;
+    min-height: 25px;
+  }
+
+  ul li a.active {
+    border:2px solid #909090;
+    color:#909090;
+  }
+  </style>
+
+<script>
+  function loadConfig() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'config.json', true);
+    xhr.send();
+
+    //button.innerHTML = 'Load';
+    //button.disabled = true;
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState != 4) return;
+      //button.innerHTML = 'Complite';
+      if (xhr.status != 200) {
+        alert('Ошибка ' + xhr.status + ': ' + xhr.statusText);
+      } else {
+        alert(xhr.responseText);
+      }
+    }
+  }
+</script>
+
+</head>
+<body>
+  <h1>WS2812FX Control</h1>
+  <canvas id='colorbar' width='75' height='1028'></canvas>
+  <div id='controls'>
+
+    <ul id='brightness'>
+      <li><a href='#' class='b' id='-'>&#9728;</a></li>
+      <li><a href='#' class='b' id='+' style="color:white">&#9728;</a></li>
+    </ul>
+
+    <ul id='speed'>
+      <li><a href='#' class='s' id='-'>&#8722;</a></li>
+      <li><a href='#' class='s' id='+'>&#43;</a></li>
+    </ul>
+
+    <!-- <ul id='auto'>
+        <li><a href='#' class='a' id='-'>&#9632;</a></li>
+        <li><a href='#' class='a' id='+'>&#9658;</a></li>
+    </ul> -->
+
+    <ul id='config'>
+      <li><a href='#' class='d' id='-'> Reset </a></li>
+      <li><a href='#' class='d' id='+'> Save </a></li>
+    </ul>
+
+    <ul id='mode'>
+      <li><a href='#' class='m' id='mode1'> mode1 </a></li>
+      <li><a href='#' class='m' id='mode2'> mode2 </a></li>
+      <li><a href='#' class='m' id='mode3'> mode3 </a></li>
+      <li><a href='#' class='m' id='mode4'> mode4 </a></li>
+      <li><a href='#' class='m' id='mode5'> mode5 </a></li>
+      <li>
+        <button onclick="loadConfig()"> Конфигурация </button>
+      </li>
+    </ul>
+
+  </div>
+</body>
+
+</html>
+
